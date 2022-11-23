@@ -1,6 +1,14 @@
 <script setup>
 import homes from "~/data/homes";
 
+useHead({
+  title: 'Homepage',
+  meta: [{
+    name: 'description',
+    content: 'This is homepage'
+  }]
+})
+
 const getHomes = computed(() => homes.slice(0, 3));
 </script>
 
