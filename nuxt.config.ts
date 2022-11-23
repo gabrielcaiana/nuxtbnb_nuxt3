@@ -4,27 +4,25 @@ export default defineNuxtConfig({
     head: {
       titleTemplate: "Mastering Nuxt | %s",
       htmlAttrs: {
-        lang: 'en'
+        lang: "en",
       },
       bodyAttrs: {
-        class: ["my-style"]
+        class: ["my-style"],
       },
-      meta: [{
-        charset: 'utf-8'
-      }]
+      meta: [
+        {
+          charset: "utf-8",
+        },
+      ],
     },
   },
 
-  css: ['~/assets/css/tailwind.css'],
+  css: ["~/assets/css/styles.css"],
 
-  build: {
-    postcss: {
-      postcssOptions: {
-        plugins: {
-            tailwindcss: {},
-            autoprefixer: {},
-          },
-        },
-      },
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
     },
+  },
 });
