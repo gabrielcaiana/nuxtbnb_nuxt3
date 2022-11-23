@@ -1,42 +1,40 @@
-# Nuxt 3 Minimal Starter
+# Mastering Nuxt (With Nuxt 3)
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Together we will build NuxtBnB! That’s a production ready AirBnB clone. Get to work with bookings, date picking, payments, galleries, users, and many more!
 
-## Setup
+### What you will learn
 
-Make sure to install the dependencies:
+- Async data
+- Advanced Search with Algolia
+- Routing
+- State Management with Pinia
+- Organizing large projects
+- Date Picker component
+- Reusable components
+- Nuxt image generation
+- Integrate backend
+- performance optimization
+- Nuxt modules and plugins
+- User authentication & permissions
+- Seo + meta tags
+- Server side rendering
+- Deployment & hosting
+- Google Maps API
 
-```bash
-# yarn
-yarn install
+### Modules
 
-# npm
-npm install
+- [x] Getting Started
+- [ ] Pages and Routing
+- [ ] Working with Google APIs
+- [ ] Working with APIs
+- [ ] Geo Search
+- [ ] Working With Modules
+- [ ] Working with Styles
+- [ ] Authentication
+- [ ] Administration Section
+- [ ] Creating Admin Editor
+- [ ] Property Availability
+- [ ] Getting Paid
+- [ ] Deploying Nuxt application
+- [ ] Final Updates
 
-# pnpm
-pnpm install --shamefully-hoist
-```
-
-## Development Server
-
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
