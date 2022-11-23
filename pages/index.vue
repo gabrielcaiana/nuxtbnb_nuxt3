@@ -13,7 +13,7 @@ const getHomes = computed(() => homes.slice(0, 3));
 </script>
 
 <template>
-  <div style="display: flex; gap: 2rem">
+  <div style="display: flex; gap: 2rem" class="bg-red-400 p-10">
     <home-card v-for="home in getHomes" :home="home" :key="home.objectID" />
   </div>
 </template>
