@@ -17,12 +17,11 @@ const { data, pending } = await useLazyAsyncData("homes", async () => {
 
 <template>
   <div class="flex gap-2">
-    <home-card
-      v-if="!pending"
-      v-for="home in data"
-      :home="home"
-      :key="home.objectID"
-    />
+    <template v-if="!pending" v-for="home in data" :key="home.objectID">
+      <nuxt-link :to="`/home/${home.objectID}`">
+        <home-card :home="home" />
+      </nuxt-link>
+    </template>
     <div v-else>Carregando...</div>
   </div>
 </template>
