@@ -24,7 +24,7 @@ Together we will build NuxtBnB! That’s a production ready AirBnB clone. Get to
 ### Modules
 
 - [x] Getting Started
-- [ ] Pages and Routing
+- [x] Pages and Routing
 - [ ] Working with Google APIs
 - [ ] Working with APIs
 - [ ] Geo Search
@@ -37,4 +37,3 @@ Together we will build NuxtBnB! That’s a production ready AirBnB clone. Get to
 - [ ] Getting Paid
 - [ ] Deploying Nuxt application
 - [ ] Final Updates
-
