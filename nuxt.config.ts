@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      titleTemplate: "Mastering Nuxt | %s",
+      titleTemplate: "%s | Mastering Nuxt",
       htmlAttrs: {
         lang: "en",
       },

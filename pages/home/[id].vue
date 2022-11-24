@@ -5,15 +5,15 @@ const { data: home, pending } = await useLazyAsyncData("homes", async () => {
   const data = await $fetch("/api/homes");
   return data.homes.find((home) => route.params.id === home.objectID);
 });
-
-useHead({
-  title: home.title || "Home",
-});
 </script>
 
 <template>
   <div>
     <div v-if="!pending">
+      <Head>
+        <Title>{{ home.title }}</Title>
+      </Head>
+
       <div class="flex">
         <img
           v-for="(image, index) in home.images"
