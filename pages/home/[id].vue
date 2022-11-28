@@ -1,9 +1,41 @@
 <script setup>
 const route = useRoute();
+const { googleApiKey } = useRuntimeConfig();
+
+useHead({
+  script: [
+    {
+      src: `https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&libraries=places&v=weekly`,
+      defer: true,
+    },
+  ],
+});
 
 const { data: home, pending } = await useLazyAsyncData("homes", async () => {
   const data = await $fetch("/api/homes");
   return data.homes.find((home) => route.params.id === home.objectID);
+});
+
+const mapElement = ref(null);
+
+onMounted(() => {
+  const mapOptions = {
+    zoom: 18,
+    center: new window.google.maps.LatLng(
+      home.value._geoloc.lat,
+      home.value._geoloc.lng
+    ),
+    disableDefaultUI: true,
+    zoomControl: true,
+  };
+
+  const map = new window.google.maps.Map(mapElement.value, mapOptions);
+  const position = new window.google.maps.LatLng(
+    home.value._geoloc.lat,
+    home.value._geoloc.lng
+  );
+  const marker = new window.google.maps.Marker({ position });
+  marker.setMap(map);
 });
 </script>
 
@@ -33,6 +65,9 @@ const { data: home, pending } = await useLazyAsyncData("homes", async () => {
       {{ home.reviewValue }} {{ home.guests }} guests,
       {{ home.bedrooms }} rooms, {{ home.beds }}, {{ home.bathrooms }} bath
       <br />
+
+      <!-- init map -->
+      <div class="w-[800px] h-[800px]" ref="mapElement"></div>
     </div>
     <div v-else>Carregando...</div>
   </div>

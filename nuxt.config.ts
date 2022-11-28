@@ -19,6 +19,12 @@ export default defineNuxtConfig({
 
   css: ["~/assets/css/styles.css"],
 
+  runtimeConfig: {
+    public: {
+      googleApiKey: process.env.GOOGLE_API_KEY,
+    },
+  },
+
   postcss: {
     plugins: {
       tailwindcss: {},
