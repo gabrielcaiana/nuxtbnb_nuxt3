@@ -1,19 +1,6 @@
 <script setup>
 const route = useRoute();
-const { googleApiKey } = useRuntimeConfig();
-
-useHead({
-  script: [
-    {
-      src: `https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&libraries=places&callback=initMap&v=weekly`,
-      async: true,
-    },
-    {
-      innerHTML: `window.initMap = function(){ window.mapLoaded = true}`,
-      hid: "init-map",
-    },
-  ],
-});
+const nuxtApp = useNuxtApp();
 
 const { data: home, pending } = await useLazyAsyncData("homes", async () => {
   const data = await $fetch("/api/homes");
@@ -22,33 +9,12 @@ const { data: home, pending } = await useLazyAsyncData("homes", async () => {
 
 const mapElement = ref(null);
 
-const showMap = () => {
-  const mapOptions = {
-    zoom: 18,
-    center: new window.google.maps.LatLng(
-      home.value._geoloc.lat,
-      home.value._geoloc.lng
-    ),
-    disableDefaultUI: true,
-    zoomControl: true,
-  };
-
-  const map = new window.google.maps.Map(mapElement.value, mapOptions);
-  const position = new window.google.maps.LatLng(
+onUpdated(() => {
+  nuxtApp.$showMap(
+    mapElement.value,
     home.value._geoloc.lat,
     home.value._geoloc.lng
   );
-  const marker = new window.google.maps.Marker({ position });
-  marker.setMap(map);
-};
-
-onMounted(() => {
-  const timer = setInterval(() => {
-    if (window.mapLoaded) {
-      clearInterval(timer);
-      showMap();
-    }
-  }, 200);
 });
 </script>
 
