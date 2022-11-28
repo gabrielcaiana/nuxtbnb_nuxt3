@@ -5,8 +5,12 @@ const { googleApiKey } = useRuntimeConfig();
 useHead({
   script: [
     {
-      src: `https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&libraries=places&v=weekly`,
-      defer: true,
+      src: `https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&libraries=places&callback=initMap&v=weekly`,
+      async: true,
+    },
+    {
+      innerHTML: `window.initMap = function(){ window.mapLoaded = true}`,
+      hid: "init-map",
     },
   ],
 });
@@ -18,7 +22,7 @@ const { data: home, pending } = await useLazyAsyncData("homes", async () => {
 
 const mapElement = ref(null);
 
-onMounted(() => {
+const showMap = () => {
   const mapOptions = {
     zoom: 18,
     center: new window.google.maps.LatLng(
@@ -36,6 +40,15 @@ onMounted(() => {
   );
   const marker = new window.google.maps.Marker({ position });
   marker.setMap(map);
+};
+
+onMounted(() => {
+  const timer = setInterval(() => {
+    if (window.mapLoaded) {
+      clearInterval(timer);
+      showMap();
+    }
+  }, 200);
 });
 </script>
 
