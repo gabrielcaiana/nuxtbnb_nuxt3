@@ -1,11 +1,9 @@
 <script setup>
 const route = useRoute();
 const nuxtApp = useNuxtApp();
+const algolia = useAlgolia();
 
-const { data: home, pending } = await useLazyAsyncData("homes", async () => {
-  const data = await $fetch("/api/homes");
-  return data.homes.find((home) => route.params.id === home.objectID);
-});
+const { home, pending } = await algolia.getHomes(route.params.id);
 
 const mapElement = ref(null);
 
