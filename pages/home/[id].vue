@@ -3,16 +3,17 @@ const route = useRoute();
 const nuxtApp = useNuxtApp();
 const algolia = useAlgolia();
 
-const { home, pending } = await algolia.getHomes(route.params.id);
+const map = ref(null);
+const { home, pending, error } = await algolia.getHomes(route.params.id);
 
-const mapElement = ref(null);
+if (error.value) {
+  throw new Error(error.value);
+}
 
-onUpdated(() => {
-  nuxtApp.$showMap(
-    mapElement.value,
-    home.value._geoloc.lat,
-    home.value._geoloc.lng
-  );
+onMounted(() => {
+  setTimeout(() => {
+    nuxtApp.$showMap(map.value, home.value._geoloc.lat, home.value._geoloc.lng);
+  }, 250);
 });
 </script>
 
@@ -44,7 +45,7 @@ onUpdated(() => {
       <br />
 
       <!-- init map -->
-      <div class="w-[800px] h-[800px]" ref="mapElement"></div>
+      <div class="w-[800px] h-[800px]" ref="map"></div>
     </div>
     <div v-else>Carregando...</div>
   </div>
