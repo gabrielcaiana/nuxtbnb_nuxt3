@@ -4,12 +4,17 @@ const nuxtApp = useNuxtApp();
 
 const map = ref(null);
 
-const { data } = await $fetch(`/api/home`, {
+const { data: home } = await $fetch(`/api/home`, {
   params: {
     id: route.params.id,
   },
 });
-const home = data[0];
+
+const { data: reviews } = await $fetch(`/api/reviews`, {
+  params: {
+    homeId: home.id,
+  },
+});
 
 onMounted(() => {
   setTimeout(
@@ -46,6 +51,13 @@ onMounted(() => {
     <br />
 
     <div class="w-[800px] h-[800px]" ref="map"></div>
+
+    <div v-for="review in reviews" :key="review.id">
+      <img :src="review.reviewer.image" :alt="review.reviewer.name" />
+      {{ review.reviewer.name }} <br />
+      {{ review.date }} <br />
+      {{ review.comment }} <br />
+    </div>
   </div>
   <div v-else>Carregando...</div>
 </template>
