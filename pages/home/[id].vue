@@ -22,6 +22,11 @@ onMounted(() => {
     250
   );
 });
+
+const formatDate = (dateStr) => {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString(undefined, { month: "long", year: "numeric" });
+};
 </script>
 
 <template>
@@ -55,8 +60,8 @@ onMounted(() => {
     <div v-for="review in reviews" :key="review.id">
       <img :src="review.reviewer.image" :alt="review.reviewer.name" />
       {{ review.reviewer.name }} <br />
-      {{ review.date }} <br />
-      {{ review.comment }} <br />
+      {{ formatDate(review.date) }} <br />
+      <ShortText :text="review.comment" :target="150" /><br />
     </div>
   </div>
   <div v-else>Carregando...</div>
