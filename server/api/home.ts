@@ -2,9 +2,13 @@ import { serverSupabaseClient } from "#supabase/server";
 
 export default defineEventHandler(async (event) => {
   const client = serverSupabaseClient(event);
-  const url = event.node.req.url;
-  const id = url?.split("?id=")[1];
+  const query = getQuery(event);
 
-  const { data } = await client.from("homes").select().eq("id", id);
+  const { data } = await client.from("homes").select().eq("id", query.id);
+
+  if (!data?.length) {
+    throw createError({ statusCode: 404, statusMessage: "Page Not Found" });
+  }
+
   return { data };
 });
