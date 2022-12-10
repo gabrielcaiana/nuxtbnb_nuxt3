@@ -4,11 +4,21 @@ export default defineEventHandler(async (event) => {
   const client = serverSupabaseClient(event);
   const query = getQuery(event);
 
-  const { data } = await client.from("homes").select().eq("id", query.id);
+  const { data: home } = (await client
+    .from("homes")
+    .select()
+    .eq("id", query.id)) as any;
 
-  if (!data?.length) {
+  if (!home?.length) {
     throw createError({ statusCode: 404, statusMessage: "Page Not Found" });
   }
 
-  return { data: data[0] };
+  const { data: user } = (await client
+    .from("users")
+    .select()
+    .eq("id", home[0].userId)) as any;
+
+  return {
+    data: { ...home[0], user: { ...user[0] } },
+  };
 });

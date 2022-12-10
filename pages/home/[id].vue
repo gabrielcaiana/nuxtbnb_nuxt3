@@ -63,6 +63,11 @@ const formatDate = (dateStr) => {
       {{ formatDate(review.date) }} <br />
       <ShortText :text="review.comment" :target="150" /><br />
     </div>
+    <img :src="home.user.image" :alt="home.user.name" /><br />
+    {{ home.user.name }} <br />
+    {{ formatDate(home.user.joined) }} <br />
+    {{ home.user.reviewCount }} <br />
+    {{ home.user.description }} <br />
   </div>
   <div v-else>Carregando...</div>
 </template>
