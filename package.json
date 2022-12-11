@@ -10,10 +10,10 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "prepare": "husky install",
-    "test": "vitest",
+    "test:unit": "vitest",
     "test:ui": "vitest --ui",
     "coverage": "vitest run --coverage",
-    "e2e": "playwright test",
+    "test:e2e": "playwright test",
     "e2e:report": "playwright show-report"
   },
   "devDependencies": {
