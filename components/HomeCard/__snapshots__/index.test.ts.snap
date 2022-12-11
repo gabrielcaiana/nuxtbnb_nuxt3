@@ -1,0 +1,26 @@
+// Vitest Snapshot v1
+
+exports[`HomeCard.vue > should render the correct component 1`] = `
+DOMWrapper {
+  "isDisabled": [Function],
+  "wrapperElement": <div
+    datatest-id="home-card"
+  >
+    <img
+      alt="Rustic Piney Lodge Nestled in the Foothills"
+      src="https://images.unsplash.com/photo-1514774849407-0bef2676db20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+      style="width: 200px;"
+    />
+     
+    <br />
+     Rustic Piney Lodge Nestled in the Foothills 
+    <br />
+     521 E Lionshead Circle Vail Colorado
+    <br />
+     4 guests 
+    <br />
+     219 / night 
+    <br />
+  </div>,
+}
+`;
