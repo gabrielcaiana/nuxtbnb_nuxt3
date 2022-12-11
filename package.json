@@ -12,12 +12,15 @@
     "prepare": "husky install",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "e2e": "playwright test",
+    "e2e:report": "playwright show-report"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.3.0",
     "@commitlint/config-conventional": "^17.3.0",
     "@nuxtjs/supabase": "^0.3.0",
+    "@playwright/test": "^1.28.1",
     "@types/morgan": "^1.9.3",
     "@vitejs/plugin-vue": "^3.1.0",
     "@vitest/coverage-c8": "^0.25.7",
