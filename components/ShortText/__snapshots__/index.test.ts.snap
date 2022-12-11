@@ -1,0 +1,22 @@
+// Vitest Snapshot v1
+
+exports[`ShortText.vue > should render the correct component 1`] = `
+DOMWrapper {
+  "isDisabled": [Function],
+  "wrapperElement": <span
+    data-v-581524dc=""
+    datatest-id="short-text"
+  >
+    Cute house in a nice neighborhood. Close to downtown and a few blocks from Sanders Beach which was really nice. A few minor notes—the neighbor is an early... 
+    <button
+      class="link"
+      data-v-581524dc=""
+      datatest-id="read-more"
+      type="button"
+    >
+       read more 
+    </button>
+    <!--v-if-->
+  </span>,
+}
+`;

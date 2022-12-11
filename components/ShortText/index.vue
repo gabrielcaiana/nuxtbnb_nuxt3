@@ -1,4 +1,5 @@
 <script setup>
+import { ref, computed } from "vue";
 const props = defineProps({
   text: {
     type: String,
@@ -29,13 +30,14 @@ chunks.value = getChunks();
 </script>
 
 <template>
-  <span>
+  <span datatest-id="short-text">
     {{ displayText }}
     <button
       v-if="isTooLong && !isExpanded"
       @click="isExpanded = true"
       class="link"
       type="button"
+      datatest-id="read-more"
     >
       read more
     </button>
@@ -44,6 +46,7 @@ chunks.value = getChunks();
       @click="isExpanded = false"
       class="link"
       type="button"
+      datatest-id="read-less"
     >
       read less
     </button>

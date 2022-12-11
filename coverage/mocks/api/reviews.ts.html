@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/HomeCard/index.vue</title>
+    <title>Code coverage report for mocks/api/reviews.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../index.html">All files</a> / <a href="index.html">components/HomeCard</a> index.vue</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">mocks/api</a> reviews.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>19/19</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>19/19</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -77,12 +77,7 @@
 <a name='L12'></a><a href='#L12'>12</a>
 <a name='L13'></a><a href='#L13'>13</a>
 <a name='L14'></a><a href='#L14'>14</a>
-<a name='L15'></a><a href='#L15'>15</a>
-<a name='L16'></a><a href='#L16'>16</a>
-<a name='L17'></a><a href='#L17'>17</a>
-<a name='L18'></a><a href='#L18'>18</a>
-<a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L15'></a><a href='#L15'>15</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -96,30 +91,20 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">&lt;script setup&gt;
-defineProps({
-  home: {
-    type: Object,
-    required: true,
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export default {
+  id: 2,
+  created_at: "2022-12-09T11:57:12.661006+00:00",
+  homeId: 2,
+  reviewer: {
+    name: "Alicia",
+    image:
+      "https://images.unsplash.com/photo-1554384645-13eab165c24b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2.3&amp;w=100&amp;h=100",
   },
-});
-&lt;/script&gt;
-&nbsp;
-&lt;template&gt;
-  &lt;div datatest-id="home-card"&gt;
-    &lt;img :src="home.images[0]" style="width: 200px" :alt="home.title" /&gt; &lt;br /&gt;
-    {{ home.title }} &lt;br /&gt;
-    {{ home.location.address }} {{ home.location.city }} {{ home.location.state
-    }}&lt;br /&gt;
-    {{ home.guests }} guests &lt;br /&gt;
-    {{ home.pricePerNight }} / night &lt;br /&gt;
-  &lt;/div&gt;
-&lt;/template&gt;
+  rating: 4,
+  date: "2022-12-08",
+  comment:
+    "Cute house in a nice neighborhood. Close to downtown and a few blocks from Sanders Beach which was really nice. A few minor notes—the neighbor is an early riser and started mowing the lawn right next to our bedroom windows at 7:30am. I also thought it was weird that we had to empty the dishwasher and take out all of the garbage before we checked out at 10am. I normally load and run the dishwasher before I leave but was unable to do so since the dishwasher had to be emptied and everything in it’s originally place. It’s minor but since the cleaning fee is more then I paid my maid for deep cleaning I would have thought I could load the dishwasher and run it and wouldn’t have to take the garbage out. Otherwise cute house, good neighborhood, clean, and comfy.",
+};
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
