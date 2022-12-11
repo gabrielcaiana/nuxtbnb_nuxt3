@@ -1,29 +1,38 @@
 export default defineNuxtPlugin((nuxtApp) => {
   const { googleApiKey } = useRuntimeConfig();
-  let mapLoaded = false;
-  let mapWaiting = null;
+  let isLoaded = false;
+  let waiting = [];
 
   // callback para inicializar o mapa e verificar se os parametros estão disponíveis
-  const initMap = () => {
-    mapLoaded = true;
-    if (mapWaiting) {
-      const { canvas, lat, lng } = mapWaiting;
-      renderMap(canvas, lat, lng);
-      mapWaiting = null;
-    }
+  const initGoogleMaps = () => {
+    isLoaded = true;
+    waiting.forEach((item) => {
+      if (typeof item.fn === "function") {
+        item.fn(...item.arguments);
+      }
+    });
+    waiting = [];
   };
 
   // cria e insere o script no DOM
   (function () {
     const script = document.createElement("script");
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&libraries=places&callback=initMap&v=weekly`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${googleApiKey}&libraries=places&callback=initGoogleMaps&v=weekly`;
     script.async = true;
-    window.initMap = initMap;
+    window.initGoogleMaps = initGoogleMaps;
     document.head.appendChild(script);
   })();
 
-  // realiza as configurações de exibição do mapa
-  const renderMap = (canvas, lat, lng) => {
+  // recebe os parametros do canvas e lat e lng para carregar o mapa
+  const showMap = (canvas, lat, lng) => {
+    if (!isLoaded) {
+      waiting.push({
+        fn: showMap,
+        arguments,
+      });
+      return;
+    }
+
     // configurações personalizadas
     const mapOptions = {
       zoom: 18,
@@ -43,12 +52,6 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     // aplica o marcador no mapa
     marker.setMap(map);
-  };
-
-  // recebe os parametros do canvas e lat e lng para carregar o mapa
-  const showMap = (canvas, lat, lng) => {
-    if (mapLoaded) renderMap(canvas, lat, lng);
-    else mapWaiting = { canvas, lat, lng };
   };
 
   // exporta a função para o aplicativo nuxt
