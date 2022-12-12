@@ -11,6 +11,7 @@ export default defineConfig({
     exclude: [
       "**/node_modules/**",
       "**/dist/**",
+      "**/test/**",
       "**/.{idea,git,cache,output,temp}/**",
     ],
     reporters: process.env.GITHUB_ACTIONS
