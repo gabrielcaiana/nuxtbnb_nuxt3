@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import ShortText from "./index.vue";
-import text from "~/mocks/api/reviews";
+import text from "~/test/fixtures/reviews";
 
 describe("ShortText.vue", () => {
   const wrapper = mount(ShortText, {

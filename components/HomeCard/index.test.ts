@@ -1,7 +1,7 @@
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 import HomeCard from "./index.vue";
-import home from "~/mocks/api/home";
+import home from "~/test/fixtures/home";
 
 describe("HomeCard.vue", () => {
   const wrapper = mount(HomeCard, {
