@@ -14,6 +14,22 @@ export default defineNuxtPlugin((nuxtApp) => {
     waiting = [];
   };
 
+  const makeAutoComplete = (input) => {
+    if (!isLoaded) {
+      waiting.push({ fn: makeAutoComplete, arguments });
+      return;
+    }
+
+    let autocomplete = new window.google.maps.places.Autocomplete(input, {
+      types: ["(cities)"],
+    });
+
+    autocomplete.addListener("place_changed", () => {
+      const place = autocomplete.getPlace();
+      input.dispatchEvent(new CustomEvent("changed", { detail: place }));
+    });
+  };
+
   // cria e insere o script no DOM
   (function () {
     const script = document.createElement("script");
@@ -56,4 +72,5 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   // exporta a função para o aplicativo nuxt
   nuxtApp.provide("showMap", (canvas, lat, lng) => showMap(canvas, lat, lng));
+  nuxtApp.provide("makeAutoComplete", (input) => makeAutoComplete(input));
 });
