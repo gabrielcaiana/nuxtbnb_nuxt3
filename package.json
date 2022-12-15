@@ -39,6 +39,7 @@
     "vitest-github-actions-reporter": "^0.9.0"
   },
   "dependencies": {
+    "algoliasearch": "^4.14.2",
     "morgan": "^1.10.0"
   }
 }
