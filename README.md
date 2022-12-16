@@ -1,7 +1,5 @@
 # Mastering Nuxt (With Nuxt 3)
 
-Together we will build NuxtBnB! That’s a production ready AirBnB clone. Get to work with bookings, date picking, payments, galleries, users, and many more!
-
 ### What you will learn
 
 - Async data
