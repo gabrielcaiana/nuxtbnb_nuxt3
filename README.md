@@ -1,4 +1,4 @@
-# Mastering Nuxt (With Nuxt 3)
+# NuxtBnB (With Nuxt 3)
 
 ### What you will learn
 
